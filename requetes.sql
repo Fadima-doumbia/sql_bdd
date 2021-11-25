@@ -420,28 +420,25 @@ SELECT Societe, Cl.Pays
 -- VI.3- Différence
 -- Exercices
 -- 1.Lister les employés (nom et prénom) étant "Representative" mais n'étant pas basé au Royaume-Uni (UK)
-SELECT Nom, Prenom
-    FROM Employe
-    WHERE Fonction = "Représentant(e)"
+SELECT nom, prenom
+    FROM employe
+    WHERE fonction = "Représentant(e)"
 EXCEPT
-SELECT Nom, Prenom
-    FROM Employe
-    WHERE Pays = "Royaume-Uni";
+SELECT nom, prenom
+    FROM employe
+    WHERE pays = "Royaume-Uni";
 
 -- 2.Lister les clients (société et pays) ayant commandés via un employé situé à 
 -- Londres ("London" pour rappel) et n'ayant jamais été livré par "United Package
 
-SELECT Societe, Cl.Pays
-    FROM Client Cl, Commande Co, Employe E
-    WHERE Cl.CodeCli = Co.CodeCli
-    AND Co.NoEmp = E.NoEmp
-    AND E.Ville = "London"
+SELECT societe, cl.pays
+    FROM client cl, commande co, employe e
+    WHERE cl.CodeCli = co.CodeCli
+    AND co.noEmp = e.noEmp
+    AND e.ville = "London"
 EXCEPT
-SELECT Societe, Cl.Pays
-    FROM Client Cl, Commande Co, Messager M
-    WHERE Cl.CodeCli = Co.CodeCli
-    AND Co.NoMess = M.NoMess
-    AND NomMess = "United Package";
-
-
-
+SELECT societe, cl.pays
+    FROM client cl, commande co, messager m
+    WHERE cl.codeCli = co.codeCli
+    AND co.noMess = M.noMess
+    AND nomMess = "United Package";
