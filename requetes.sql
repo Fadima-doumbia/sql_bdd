@@ -437,8 +437,10 @@ SELECT societe, cl.pays
     AND co.noEmp = e.noEmp
     AND e.ville = "London"
 EXCEPT
+
 SELECT societe, cl.pays
     FROM client cl, commande co, messager m
     WHERE cl.codeCli = co.codeCli
     AND co.noMess = M.noMess
     AND nomMess = "United Package";
+
