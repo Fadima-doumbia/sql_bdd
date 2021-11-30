@@ -429,7 +429,7 @@ SELECT nom, prenom
     WHERE pays = "Royaume-Uni";
 
 -- 2.Lister les clients (société et pays) ayant commandés via un employé situé à 
--- Londres ("London" pour rappel) et n'ayant jamais été livré par "United Package
+-- Londres ("London" pour rappel) et n'ayant jamais été livré par "United Package.
 
 SELECT societe, cl.pays
     FROM client cl, commande co, employe e
@@ -444,3 +444,15 @@ SELECT societe, cl.pays
     AND co.noMess = M.noMess
     AND nomMess = "United Package";
 
+-- SELECT societe, cl.pays
+--     FROM client cl, commande co, employe e
+--     WHERE cl.CodeCli = co.CodeCli
+--     AND co.noEmp = e.noEmp
+--     AND e.ville = "London"
+-- EXCEPT
+
+-- SELECT societe, cl.pays
+--     FROM client cl, commande co, messager m
+--     WHERE cl.codeCli = co.codeCli
+--     AND co.noMess = M.noMess
+--     AND nomMess = "United Package";
